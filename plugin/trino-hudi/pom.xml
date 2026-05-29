@@ -199,6 +199,13 @@
 
         <dependency>
             <groupId>io.trino</groupId>
+            <artifactId>trino-filesystem</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.trino</groupId>
             <artifactId>trino-hdfs</artifactId>
             <scope>test</scope>
         </dependency>
@@ -349,6 +356,13 @@
         </dependency>
 
         <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20251224</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
@@ -357,6 +371,12 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
