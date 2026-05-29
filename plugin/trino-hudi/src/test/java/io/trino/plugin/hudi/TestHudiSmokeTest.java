@@ -144,9 +144,13 @@ public class TestHudiSmokeTest
                 .build();
         String res = getQueryRunner().execute(session, "SELECT * FROM " + HUDI_NON_EXTRACTABLE_PARTITION_PATH).toString();
         System.out.println(res);
-        assertQuery(session, "SELECT name FROM " + HUDI_NON_EXTRACTABLE_PARTITION_PATH + " where dt='2018-10-05'",
+        assertQuery(
+                session,
+                "SELECT name FROM " + HUDI_NON_EXTRACTABLE_PARTITION_PATH + " where dt='2018-10-05'",
                 "SELECT * FROM VALUES ('Alice'), ('Bob')");
-        assertQuery(session, "SELECT name FROM " + HUDI_NON_EXTRACTABLE_PARTITION_PATH + " where dt='2018-10-05' and hh='10'",
+        assertQuery(
+                session,
+                "SELECT name FROM " + HUDI_NON_EXTRACTABLE_PARTITION_PATH + " where dt='2018-10-05' and hh='10'",
                 "SELECT * FROM VALUES ('Alice'), ('Bob')");
     }
 
@@ -911,8 +915,10 @@ public class TestHudiSmokeTest
         Pattern scanFilterInputRowsPattern = getScanFilterInputRowsPattern(tableIdentifier);
         Matcher matcher = scanFilterInputRowsPattern.matcher(explainRes.toString());
         assertThat(matcher.find())
-                .withFailMessage("Could not find 'ScanFilter' for table '%s' with 'dynamicFilters' and 'Input: X rows' stats in EXPLAIN output.\nOutput was:\n%s",
-                        tableIdentifier, explainRes.toString())
+                .withFailMessage(
+                        "Could not find 'ScanFilter' for table '%s' with 'dynamicFilters' and 'Input: X rows' stats in EXPLAIN output.\nOutput was:\n%s",
+                        tableIdentifier,
+                        explainRes.toString())
                 .isTrue();
 
         // matcher#group() must be invoked after matcher#find()
@@ -947,8 +953,10 @@ public class TestHudiSmokeTest
         Matcher matcher = scanFilterInputRowsPattern.matcher(explainRes.toString());
         // Should not find any dynamic filtering keywords
         assertThat(matcher.find())
-                .withFailMessage("Could not find 'ScanFilter' for table '%s' with 'dynamicFilters' and 'Input: X rows' stats in EXPLAIN output.\nOutput was:\n%s",
-                        tableIdentifier, explainRes.toString())
+                .withFailMessage(
+                        "Could not find 'ScanFilter' for table '%s' with 'dynamicFilters' and 'Input: X rows' stats in EXPLAIN output.\nOutput was:\n%s",
+                        tableIdentifier,
+                        explainRes.toString())
                 .isFalse();
 
         // Skip check on whether optimization is not applied or not, just check that output is queryable
@@ -975,8 +983,10 @@ public class TestHudiSmokeTest
         Pattern scanFilterInputRowsPattern = getScanFilterInputRowsPattern(tableIdentifier);
         Matcher matcher = scanFilterInputRowsPattern.matcher(explainRes.toString());
         assertThat(matcher.find())
-                .withFailMessage("Could not find 'ScanFilter' for table '%s' with 'dynamicFilters' and 'Input: X rows' stats in EXPLAIN output.\nOutput was:\n%s",
-                        tableIdentifier, explainRes.toString())
+                .withFailMessage(
+                        "Could not find 'ScanFilter' for table '%s' with 'dynamicFilters' and 'Input: X rows' stats in EXPLAIN output.\nOutput was:\n%s",
+                        tableIdentifier,
+                        explainRes.toString())
                 .isTrue();
 
         // matcher#group() must be invoked after matcher#find()
@@ -1008,8 +1018,10 @@ public class TestHudiSmokeTest
         Pattern scanFilterInputRowsPattern = getScanFilterInputRowsPattern(tableIdentifier);
         Matcher matcher = scanFilterInputRowsPattern.matcher(explainRes.toString());
         assertThat(matcher.find())
-                .withFailMessage("Could not find 'ScanFilter' for table '%s' with 'dynamicFilters' and 'Input: X rows' stats in EXPLAIN output.\nOutput was:\n%s",
-                        tableIdentifier, explainRes.toString())
+                .withFailMessage(
+                        "Could not find 'ScanFilter' for table '%s' with 'dynamicFilters' and 'Input: X rows' stats in EXPLAIN output.\nOutput was:\n%s",
+                        tableIdentifier,
+                        explainRes.toString())
                 .isTrue();
 
         // matcher#group() must be invoked after matcher#find()
@@ -1047,8 +1059,10 @@ public class TestHudiSmokeTest
         Pattern scanFilterInputRowsPattern = getScanFilterInputRowsPattern(tableIdentifier);
         Matcher matcher = scanFilterInputRowsPattern.matcher(explainRes.toString());
         assertThat(matcher.find())
-                .withFailMessage("Could not find 'ScanFilter' for table '%s' with 'dynamicFilters' and 'Input: X rows' stats in EXPLAIN output.\nOutput was:\n%s",
-                        tableIdentifier, explainRes.toString())
+                .withFailMessage(
+                        "Could not find 'ScanFilter' for table '%s' with 'dynamicFilters' and 'Input: X rows' stats in EXPLAIN output.\nOutput was:\n%s",
+                        tableIdentifier,
+                        explainRes.toString())
                 .isFalse();
 
         // Skip check on whether optimization is not applied or not, just check that output is queryable
@@ -1087,10 +1101,37 @@ public class TestHudiSmokeTest
 
         // Define the columns that are being tested:
         ImmutableList<String> columnsToTest = ImmutableList.of(
-                "uuid", "precombine_field", "col_boolean", "col_tinyint", "col_smallint", "col_int", "col_bigint", "col_float", "col_double", "col_decimal", "col_string",
-                "col_varchar", "col_char", "col_binary", "col_date", "col_timestamp", "col_array_int", "col_array_string", "col_map_string_int", "col_struct", "col_array_struct",
-                "col_map_string_struct", "col_array_struct_with_map", "col_map_struct_with_array", "col_struct_nested_struct", "col_array_array_int", "col_map_string_array_double",
-                "col_map_string_map_string_date", "col_struct_array_struct", "col_struct_map", "part_col");
+                "uuid",
+                "precombine_field",
+                "col_boolean",
+                "col_tinyint",
+                "col_smallint",
+                "col_int",
+                "col_bigint",
+                "col_float",
+                "col_double",
+                "col_decimal",
+                "col_string",
+                "col_varchar",
+                "col_char",
+                "col_binary",
+                "col_date",
+                "col_timestamp",
+                "col_array_int",
+                "col_array_string",
+                "col_map_string_int",
+                "col_struct",
+                "col_array_struct",
+                "col_map_string_struct",
+                "col_array_struct_with_map",
+                "col_map_struct_with_array",
+                "col_struct_nested_struct",
+                "col_array_array_int",
+                "col_map_string_array_double",
+                "col_map_string_map_string_date",
+                "col_struct_array_struct",
+                "col_struct_map",
+                "part_col");
 
         // Define expected output
         ImmutableList<ImmutableList<String>> expectedRowValues = ImmutableList.of(
@@ -1306,7 +1347,9 @@ public class TestHudiSmokeTest
                 new LocalInputFile(parquetFile),
                 new FileFormatDataSourceStats(),
                 ParquetReaderOptions.builder().build(),
-                DateTimeZone.UTC, DynamicFilter.EMPTY, true)) {
+                DateTimeZone.UTC,
+                DynamicFilter.EMPTY,
+                true)) {
             MaterializedResult result = materializeSourceDataStream(session, pageSource, List.of(columnType)).toTestTypes();
             assertThat(result.getMaterializedRows())
                     .containsOnly(new MaterializedRow(List.of(expected)));
@@ -1354,7 +1397,7 @@ public class TestHudiSmokeTest
     {
         ResourceHudiTablesInitializer.TestingTable[] tablesToTest = {
                 HUDI_COMPREHENSIVE_TYPES_V6_MOR,
-                HUDI_COMPREHENSIVE_TYPES_V8_MOR
+                HUDI_COMPREHENSIVE_TYPES_V8_MOR,
         };
         Boolean[] booleanValues = {true, false};
 

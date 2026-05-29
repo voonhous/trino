@@ -181,7 +181,8 @@ public class TestHudiPartitionInfoLoader
                 .setTableName("test_table")
                 .setValues(ImmutableList.of())
                 .withStorage(storageBuilder -> storageBuilder
-                        .setStorageFormat(StorageFormat.create("org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+                        .setStorageFormat(StorageFormat.create(
+                                "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
                                 "org.apache.hadoop.mapred.TextInputFormat",
                                 "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat"))
                         .setLocation(partitionLocation))

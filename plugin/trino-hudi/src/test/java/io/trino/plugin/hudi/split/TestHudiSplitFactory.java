@@ -197,10 +197,17 @@ public class TestHudiSplitFactory
         StoragePathInfo baseFileInfo = new StoragePathInfo(
                 new StoragePath(baseFilePath), baseFileSize.toBytes(), false, (short) 0, blockSize, System.currentTimeMillis());
         StoragePathInfo logFileInfo = new StoragePathInfo(
-                new StoragePath(logFilePath), logFileSize.isPresent() ? logFileSize.get().toBytes() : 0L,
-                false, (short) 0, blockSize, System.currentTimeMillis());
+                new StoragePath(logFilePath),
+                logFileSize.isPresent() ? logFileSize.get().toBytes() : 0L,
+                false,
+                (short) 0,
+                blockSize,
+                System.currentTimeMillis());
         HoodieBaseFile baseFile = new HoodieBaseFile(baseFileInfo);
-        return new FileSlice(fileGroupId, COMMIT_TIME, baseFile,
+        return new FileSlice(
+                fileGroupId,
+                COMMIT_TIME,
+                baseFile,
                 logFileSize.isPresent() ? ImmutableList.of(new HoodieLogFile(logFileInfo)) : ImmutableList.of());
     }
 }

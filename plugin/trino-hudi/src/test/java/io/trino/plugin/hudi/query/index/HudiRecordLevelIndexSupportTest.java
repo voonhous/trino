@@ -333,9 +333,12 @@ public class HudiRecordLevelIndexSupportTest
         // Verify only the first value from each IN clause is used
         assertThat(result).hasSize(6);
         assertThat(result).isEqualTo(
-                List.of("part1:val1a,part2:val2a", "part1:val1a,part2:val2b",
-                        "part1:val1b,part2:val2a", "part1:val1b,part2:val2b",
-                        "part1:val1c,part2:val2a", "part1:val1c,part2:val2b"));
+                List.of("part1:val1a,part2:val2a",
+                        "part1:val1a,part2:val2b",
+                        "part1:val1b,part2:val2a",
+                        "part1:val1b,part2:val2b",
+                        "part1:val1c,part2:val2a",
+                        "part1:val1c,part2:val2b"));
     }
 
     @Test

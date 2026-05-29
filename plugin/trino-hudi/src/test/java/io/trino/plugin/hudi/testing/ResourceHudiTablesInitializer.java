@@ -270,7 +270,7 @@ public class ResourceHudiTablesInitializer
                 HashAndSizeResult dstHashAndSize;
                 try {
                     dstHashAndSize = srcHashAndSize.size > 0 ? calculateHashAndSize(location, fileSystem)
-                        : new HashAndSizeResult(new byte[0], 0);
+                            : new HashAndSizeResult(new byte[0], 0);
                 }
                 catch (NoSuchAlgorithmException e) {
                     throw new IOException("Failed to calculate destination hash: Algorithm not found", e);
@@ -451,6 +451,7 @@ public class ResourceHudiTablesInitializer
 
         // Table schema has capitalized column names, but the catalog returns them in lowercase.
         // Using lowercase here to match the catalog for testing.
+
         private static List<Column> hudiTableWithFieldNamesInCapsRegularColumns()
         {
             return ImmutableList.of(
@@ -461,6 +462,7 @@ public class ResourceHudiTablesInitializer
 
         // The actual Hudi table has "Country" as the partition field name, but the catalog provides it in lowercase.
         // Using lowercase here to stay consistent with the catalog for testing.
+
         private static Map<String, String> hudiTableWithFieldNamesInCapsPartitions()
         {
             return ImmutableMap.of(
@@ -470,6 +472,7 @@ public class ResourceHudiTablesInitializer
 
         // The actual Hudi table has "Country" as the partition field name, but the catalog provides it in lowercase.
         // Using lowercase here to stay consistent with the catalog for testing.
+
         private static List<Column> hudiTableWithFieldNamesInCapsPartitionColumns()
         {
             return ImmutableList.of(column("country", HIVE_STRING));

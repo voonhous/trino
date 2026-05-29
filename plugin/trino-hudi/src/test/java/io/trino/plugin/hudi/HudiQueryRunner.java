@@ -35,9 +35,9 @@ import java.util.Map;
 import java.util.Optional;
 
 import static io.trino.testing.TestingSession.testSessionBuilder;
-import static io.trino.testing.containers.Minio.MINIO_ROOT_USER;
 import static io.trino.testing.containers.Minio.MINIO_REGION;
 import static io.trino.testing.containers.Minio.MINIO_ROOT_PASSWORD;
+import static io.trino.testing.containers.Minio.MINIO_ROOT_USER;
 import static java.util.Objects.requireNonNull;
 
 public final class HudiQueryRunner

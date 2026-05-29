@@ -40,7 +40,8 @@ class TestHudiPageSourceProviderTest
     public void testRemapSimpleMatchCaseInsensitive()
     {
         // Physical Schema: [col_a (int), col_b (string)]
-        MessageType fileSchema = new MessageType("file_schema",
+        MessageType fileSchema = new MessageType(
+                "file_schema",
                 Types.primitive(PrimitiveType.PrimitiveTypeName.INT32, OPTIONAL).named("col_a"),
                 Types.primitive(PrimitiveType.PrimitiveTypeName.BINARY, OPTIONAL).as(LogicalTypeAnnotation.stringType()).named("col_b"));
 
@@ -63,7 +64,8 @@ class TestHudiPageSourceProviderTest
     public void testRemapSimpleMatchCaseSensitive()
     {
         // Physical Schema: [col_a (int), Col_B (string)] - Note the case difference
-        MessageType fileSchema = new MessageType("file_schema",
+        MessageType fileSchema = new MessageType(
+                "file_schema",
                 Types.primitive(PrimitiveType.PrimitiveTypeName.INT32, OPTIONAL).named("col_a"),
                 Types.primitive(PrimitiveType.PrimitiveTypeName.BINARY, OPTIONAL).as(LogicalTypeAnnotation.stringType()).named("Col_B"));
 
@@ -84,7 +86,8 @@ class TestHudiPageSourceProviderTest
     public void testRemapCaseSensitiveMismatch()
     {
         // Physical Schema: [col_a (int), col_b (string)]
-        MessageType fileSchema = new MessageType("file_schema",
+        MessageType fileSchema = new MessageType(
+                "file_schema",
                 Types.primitive(PrimitiveType.PrimitiveTypeName.INT32, OPTIONAL).named("col_a"),
                 Types.primitive(PrimitiveType.PrimitiveTypeName.BINARY, OPTIONAL).as(LogicalTypeAnnotation.stringType()).named("col_b"));
 
@@ -102,7 +105,8 @@ class TestHudiPageSourceProviderTest
     public void testRemapDifferentOrder()
     {
         // Physical Schema: [id (int), name (string), timestamp (long)]
-        MessageType fileSchema = new MessageType("file_schema",
+        MessageType fileSchema = new MessageType(
+                "file_schema",
                 Types.primitive(PrimitiveType.PrimitiveTypeName.INT32, OPTIONAL).named("id"),
                 Types.primitive(PrimitiveType.PrimitiveTypeName.BINARY, OPTIONAL).as(LogicalTypeAnnotation.stringType()).named("name"),
                 Types.primitive(PrimitiveType.PrimitiveTypeName.INT64, OPTIONAL).named("timestamp"));
@@ -130,7 +134,8 @@ class TestHudiPageSourceProviderTest
     public void testRemapSubset()
     {
         // Physical Schema: [col_a, col_b, col_c, col_d]
-        MessageType fileSchema = new MessageType("file_schema",
+        MessageType fileSchema = new MessageType(
+                "file_schema",
                 Types.primitive(PrimitiveType.PrimitiveTypeName.INT32, OPTIONAL).named("col_a"),
                 Types.primitive(PrimitiveType.PrimitiveTypeName.BINARY, OPTIONAL).as(LogicalTypeAnnotation.stringType()).named("col_b"),
                 Types.primitive(PrimitiveType.PrimitiveTypeName.BOOLEAN, OPTIONAL).named("col_c"),
@@ -155,7 +160,8 @@ class TestHudiPageSourceProviderTest
     public void testRemapEmptyRequested()
     {
         // Physical Schema: [col_a, col_b]
-        MessageType fileSchema = new MessageType("file_schema",
+        MessageType fileSchema = new MessageType(
+                "file_schema",
                 Types.primitive(PrimitiveType.PrimitiveTypeName.INT32, OPTIONAL).named("col_a"),
                 Types.primitive(PrimitiveType.PrimitiveTypeName.BINARY, OPTIONAL).as(LogicalTypeAnnotation.stringType()).named("col_b"));
 
@@ -172,7 +178,8 @@ class TestHudiPageSourceProviderTest
     public void testRemapColumnNotFound()
     {
         // Physical Schema: [col_a]
-        MessageType fileSchema = new MessageType("file_schema",
+        MessageType fileSchema = new MessageType(
+                "file_schema",
                 Types.primitive(PrimitiveType.PrimitiveTypeName.INT32, OPTIONAL).named("col_a"));
 
         // Requested Columns (includes a non-existent column)

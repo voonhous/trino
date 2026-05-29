@@ -53,9 +53,7 @@ public class TypeInfoHelper
     public static final TypeInfo MAP_STRING_LONG_TYPE_INFO = getMapTypeInfo(STRING_TYPE_INFO, LONG_TYPE_INFO);
     public static final TypeInfo MAP_STRING_DATE_TYPE_INFO = getMapTypeInfo(STRING_TYPE_INFO, DATE_TYPE_INFO);
 
-    private TypeInfoHelper()
-    {
-    }
+    private TypeInfoHelper() {}
 
     /**
      * Creates a HiveType for a list type.
