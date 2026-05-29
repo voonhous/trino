@@ -35,9 +35,9 @@ import java.util.Map;
 import java.util.Optional;
 
 import static io.trino.testing.TestingSession.testSessionBuilder;
+import static io.trino.testing.containers.Minio.MINIO_ROOT_USER;
 import static io.trino.testing.containers.Minio.MINIO_REGION;
 import static io.trino.testing.containers.Minio.MINIO_ROOT_PASSWORD;
-import static io.trino.testing.containers.Minio.MINIO_ROOT_USER;
 import static java.util.Objects.requireNonNull;
 
 public final class HudiQueryRunner
@@ -59,7 +59,7 @@ public final class HudiQueryRunner
     public static Builder builder(Hive3MinioDataLake hiveMinioDataLake)
     {
         return new Builder("s3://" + hiveMinioDataLake.getBucketName() + "/")
-                .addConnectorProperty("fs.s3.enabled", "true")
+                .addConnectorProperty("fs.native-s3.enabled", "true")
                 .addConnectorProperty("s3.aws-access-key", MINIO_ROOT_USER)
                 .addConnectorProperty("s3.aws-secret-key", MINIO_ROOT_PASSWORD)
                 .addConnectorProperty("s3.region", MINIO_REGION)
@@ -97,6 +97,13 @@ public final class HudiQueryRunner
             return this;
         }
 
+        @CanIgnoreReturnValue
+        public Builder addConnectorProperties(Map<String, String> properties)
+        {
+            this.connectorProperties.putAll(properties);
+            return this;
+        }
+
         @Override
         public DistributedQueryRunner build()
                 throws Exception
@@ -130,7 +137,7 @@ public final class HudiQueryRunner
     {
         private DefaultHudiQueryRunnerMain() {}
 
-        static void main()
+        public static void main(String[] args)
                 throws Exception
         {
             Logging.initialize();
@@ -150,7 +157,7 @@ public final class HudiQueryRunner
     {
         private HudiMinioQueryRunnerMain() {}
 
-        static void main()
+        public static void main(String[] args)
                 throws Exception
         {
             Logging.initialize();
