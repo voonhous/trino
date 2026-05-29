@@ -46,6 +46,6 @@ final class TestTrinoStorageConfiguration
         providedConfig.put(HOODIE_IO_FACTORY_CLASS.key(), overriddenClassName);
         TrinoStorageConfiguration config = getStorageConfiguration(providedConfig);
         assertThat(config.getString(HOODIE_IO_FACTORY_CLASS.key()).get()).isEqualTo(overriddenClassName);
-        assertThat(config.getString(HOODIE_STORAGE_CLASS.key()).get()).isEqualTo(TrinoHudiStorage.class.getName());
+        assertThat(config.getString(HOODIE_STORAGE_CLASS.key()).get()).isEqualTo(HudiTrinoStorage.class.getName());
     }
 }

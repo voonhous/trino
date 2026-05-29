@@ -59,7 +59,7 @@ final class TestTrinoHudiStorage
     @Override
     protected HoodieStorage getStorage(Object fileSystem, Object config)
     {
-        return new TrinoHudiStorage((TrinoFileSystem) fileSystem, (TrinoStorageConfiguration) config);
+        return new HudiTrinoStorage((TrinoFileSystem) fileSystem, (TrinoStorageConfiguration) config);
     }
 
     @Override
@@ -89,7 +89,7 @@ final class TestTrinoHudiStorage
         assertThat(getStorage().getUri()).isEqualTo(new URI(""));
     }
 
-    // This test is overridden since TrinoHudiStorage does not support globEntries,
+    // This test is overridden since HudiTrinoStorage does not support globEntries,
     // as it is not used in the Trino Hudi connector
     @Override
     @Test
@@ -151,14 +151,14 @@ final class TestTrinoHudiStorage
                 () -> storage.listDirectEntries(new StoragePath(getTempDir(), "*")))
                 .isInstanceOf(FileNotFoundException.class);
 
-        // TrinoHudiStorage does not support globEntries, as it is not used
+        // HudiTrinoStorage does not support globEntries, as it is not used
         // in the Trino Hudi connector
         assertThatThrownBy(
                 () -> storage.globEntries(new StoragePath(getTempDir(), "x/*/1.file")))
                 .isInstanceOf(UnsupportedOperationException.class);
     }
 
-    // This test is overridden since TrinoHudiStorage always returns true for deletion,
+    // This test is overridden since HudiTrinoStorage always returns true for deletion,
     // because TrinoFileSystem does not indicate whether the file to delete exists or not
     @Override
     @Test
@@ -322,9 +322,9 @@ final class TestTrinoHudiStorage
     void testListEmptyDirectoryOnNonHierarchicalFileSystem()
             throws IOException
     {
-        // Test TrinoHudiStorage behavior on a non-hierarchical filesystem (like S3)
+        // Test HudiTrinoStorage behavior on a non-hierarchical filesystem (like S3)
         MemoryFileSystem memoryFileSystem = new MemoryFileSystem();
-        try (HoodieStorage storage = new TrinoHudiStorage(memoryFileSystem, new TrinoStorageConfiguration())) {
+        try (HoodieStorage storage = new HudiTrinoStorage(memoryFileSystem, new TrinoStorageConfiguration())) {
             // On non-hierarchical filesystem, directories are virtual and only exist if they contain files.
             // An "empty directory" doesn't exist, so listing should throw FileNotFoundException.
             StoragePath emptyDir = new StoragePath("memory:///empty_directory");
