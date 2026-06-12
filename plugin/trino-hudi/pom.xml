@@ -168,6 +168,12 @@
 
         <dependency>
             <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-common</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-context</artifactId>
             <scope>provided</scope>
         </dependency>
@@ -175,6 +181,12 @@
         <dependency>
             <groupId>io.trino</groupId>
             <artifactId>trino-spi</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.locationtech.jts</groupId>
+            <artifactId>jts-core</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -423,13 +435,20 @@
                         <ignoredUsedUndeclaredDependency>io.airlift:log</ignoredUsedUndeclaredDependency>
                         <ignoredUsedUndeclaredDependency>io.airlift:log-manager</ignoredUsedUndeclaredDependency>
                         <ignoredUsedUndeclaredDependency>io.airlift:units</ignoredUsedUndeclaredDependency>
+                        <ignoredUsedUndeclaredDependency>io.opentelemetry:opentelemetry-sdk-trace</ignoredUsedUndeclaredDependency>
+                        <ignoredUsedUndeclaredDependency>io.trino:trino-client</ignoredUsedUndeclaredDependency>
                         <ignoredUsedUndeclaredDependency>io.trino:trino-filesystem</ignoredUsedUndeclaredDependency>
                         <ignoredUsedUndeclaredDependency>io.trino:trino-hive</ignoredUsedUndeclaredDependency>
                         <ignoredUsedUndeclaredDependency>io.trino:trino-hive-formats</ignoredUsedUndeclaredDependency>
                         <ignoredUsedUndeclaredDependency>io.trino:trino-metastore</ignoredUsedUndeclaredDependency>
+                        <ignoredUsedUndeclaredDependency>io.trino:trino-parquet</ignoredUsedUndeclaredDependency>
                         <ignoredUsedUndeclaredDependency>io.trino:trino-plugin-toolkit</ignoredUsedUndeclaredDependency>
+                        <ignoredUsedUndeclaredDependency>joda-time:joda-time</ignoredUsedUndeclaredDependency>
+                        <ignoredUsedUndeclaredDependency>org.apache.avro:avro</ignoredUsedUndeclaredDependency>
                         <ignoredUsedUndeclaredDependency>org.apache.hudi:hudi-common</ignoredUsedUndeclaredDependency>
                         <ignoredUsedUndeclaredDependency>org.apache.hudi:hudi-io</ignoredUsedUndeclaredDependency>
+                        <ignoredUsedUndeclaredDependency>org.apache.parquet:parquet-column</ignoredUsedUndeclaredDependency>
+                        <ignoredUsedUndeclaredDependency>org.jetbrains:annotations</ignoredUsedUndeclaredDependency>
                     </ignoredUsedUndeclaredDependencies>
                     <ignoredNonTestScopedDependencies>
                         <ignoredNonTestScopedDependency>com.google.errorprone:error_prone_annotations</ignoredNonTestScopedDependency>
@@ -438,13 +457,18 @@
                         <ignoredNonTestScopedDependency>io.airlift:log</ignoredNonTestScopedDependency>
                         <ignoredNonTestScopedDependency>io.airlift:log-manager</ignoredNonTestScopedDependency>
                         <ignoredNonTestScopedDependency>io.airlift:units</ignoredNonTestScopedDependency>
+                        <ignoredNonTestScopedDependency>io.opentelemetry:opentelemetry-sdk-trace</ignoredNonTestScopedDependency>
                         <ignoredNonTestScopedDependency>io.trino:trino-filesystem</ignoredNonTestScopedDependency>
                         <ignoredNonTestScopedDependency>io.trino:trino-hive</ignoredNonTestScopedDependency>
                         <ignoredNonTestScopedDependency>io.trino:trino-hive-formats</ignoredNonTestScopedDependency>
                         <ignoredNonTestScopedDependency>io.trino:trino-metastore</ignoredNonTestScopedDependency>
+                        <ignoredNonTestScopedDependency>io.trino:trino-parquet</ignoredNonTestScopedDependency>
                         <ignoredNonTestScopedDependency>io.trino:trino-plugin-toolkit</ignoredNonTestScopedDependency>
+                        <ignoredNonTestScopedDependency>joda-time:joda-time</ignoredNonTestScopedDependency>
+                        <ignoredNonTestScopedDependency>org.apache.avro:avro</ignoredNonTestScopedDependency>
                         <ignoredNonTestScopedDependency>org.apache.hudi:hudi-common</ignoredNonTestScopedDependency>
                         <ignoredNonTestScopedDependency>org.apache.hudi:hudi-io</ignoredNonTestScopedDependency>
+                        <ignoredNonTestScopedDependency>org.apache.parquet:parquet-column</ignoredNonTestScopedDependency>
                     </ignoredNonTestScopedDependencies>
                 </configuration>
             </plugin>
